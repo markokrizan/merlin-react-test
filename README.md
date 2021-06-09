@@ -2,14 +2,17 @@
 
 ## Getting Started:
 
-To get started, run the following commands
+To get started, run the following commands:
+
 
 ```bash
-npm i
-npm run dev
+$ npm i
+$ npm run dev
 ```
 
 ## Tasks:
+
+Please complete all three tasks.
 
 1. Using a library of your choice, implement functionality to allow dragging and dropping of tickets between columns.
 
@@ -24,3 +27,5 @@ If you have any notes or feedback about the test, feel free to leave them below.
 ---
 
 ##### Applicant Notes:
+
+*Leave Notes Here...*
