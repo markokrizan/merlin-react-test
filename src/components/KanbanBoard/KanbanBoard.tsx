@@ -11,8 +11,8 @@ const KanbanBoard: FC<Kanban> = (kanban) => {
   return (
     <div style={{ display: "flex", marginTop: 20 }}>
       <KanbanContextProvider value={kanban}>
-        {kanban.columns.map((col, i) => (
-          <KanbanColumn key={i} column={col} onSelect={onTicketSelect} />
+        {kanban.columns.map((col) => (
+          <KanbanColumn key={col.name} column={col} onSelect={onTicketSelect} />
         ))}
       </KanbanContextProvider>
     </div>

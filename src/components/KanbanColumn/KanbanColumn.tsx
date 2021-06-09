@@ -26,7 +26,11 @@ const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
         </div>
       </div>
       {column.tickets.map((ticket) => (
-        <KanbanTicket ticket={ticket} onClick={() => onSelect(ticket)} />
+        <KanbanTicket
+          key={ticket.title}
+          ticket={ticket}
+          onClick={() => onSelect(ticket)}
+        />
       ))}
     </div>
   );

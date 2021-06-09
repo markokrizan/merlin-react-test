@@ -1,0 +1,18 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
