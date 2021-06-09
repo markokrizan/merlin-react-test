@@ -20,5 +20,6 @@
   margin-bottom: 5px;
 }
 
-/* .ticket--estimate {
-} */
+.ticket--title:hover {
+  text-decoration: underline;
+}
