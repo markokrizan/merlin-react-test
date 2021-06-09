@@ -21,8 +21,11 @@ const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
       <div className={styles["column--title"]}>
         {column.name}
         <div>
-          <AddIcon onClick={createTicket} />
-          <DeleteIcon onClick={() => deleteColumn(column.name)} />
+          <AddIcon className={styles["icon-button"]} onClick={createTicket} />
+          <DeleteIcon
+            className={styles["icon-button"]}
+            onClick={() => deleteColumn(column.name)}
+          />
         </div>
       </div>
       {column.tickets.map((ticket) => (

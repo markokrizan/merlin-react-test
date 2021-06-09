@@ -16,7 +16,7 @@ const KanbanTicket: FC<{ ticket: Ticket; onClick: () => void }> = ({
         <a onClick={() => onClick()}>{ticket.title}</a>
         <DeleteIcon
           onClick={() => deleteTicket(ticket.title)}
-          style={{ minWidth: 30 }}
+          className={styles["icon-button"]}
         />
       </div>
       <div className={styles["ticket--estimate"]}>
