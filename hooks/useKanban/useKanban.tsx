@@ -39,9 +39,10 @@ const defaultState: KanbanState = {
 const reducer = produce((state: KanbanState, action) => {
   switch (action.type) {
     case "ADD_TICKET": {
-      state.columns
-        .find(({ name }) => name === action.column)
-        .tickets.push(action.ticket);
+      const col = state.columns.find(({ name }) => name === action.column);
+
+      if (col) col.tickets.push(action.ticket);
+
       break;
     }
     case "DELETE_TICKET": {
@@ -49,9 +50,7 @@ const reducer = produce((state: KanbanState, action) => {
 
       const col = state.columns.find((c) => c.tickets.some(shouldDelete));
 
-      if (!col) break;
-
-      col.tickets = col.tickets.filter((v) => !shouldDelete(v));
+      if (col) col.tickets = col.tickets.filter((v) => !shouldDelete(v));
       break;
     }
     case "ADD_COLUMN": {
@@ -62,7 +61,9 @@ const reducer = produce((state: KanbanState, action) => {
       const index = state.columns.findIndex(
         ({ name }) => name === action.column
       );
-      state.columns.splice(index, 1);
+
+      if (index !== -1) state.columns.splice(index, 1);
+
       break;
     }
     default: {

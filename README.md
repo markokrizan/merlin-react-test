@@ -18,3 +18,9 @@ npm run dev
 3. When I click the '+' button on a column, a modal should appear with a form, allowing me to create a new ticket.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+If you have any notes or feedback about the test, feel free to leave them below.
+
+---
+
+##### Applicant Notes:
