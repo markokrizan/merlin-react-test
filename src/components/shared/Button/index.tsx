@@ -2,10 +2,16 @@ import { FC } from "react";
 
 import styles from "./button.module.css";
 
-const Button: FC = (props) => {
+const Button: FC = ({
+  children,
+  ...rest
+}: {
+  children: React.ReactNode;
+  rest: any;
+}) => {
   return (
-    <button className={styles.button} {...props}>
-      {props.children}
+    <button className={styles.button} {...rest}>
+      {children}
     </button>
   );
 };
