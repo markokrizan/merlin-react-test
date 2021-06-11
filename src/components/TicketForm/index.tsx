@@ -23,6 +23,18 @@ const TicketForm: FC<{ column: Column; closeModal: () => void }> = ({
       estimate,
     };
 
+    // TODO: Move to generic validation service based on validation schemas and rules
+    const hasEmptyFields = Object.keys(newTicket).some(
+      (key: string) => !newTicket[key]
+    );
+    const isDuplicateName = column.tickets.find(
+      (ticket: Ticket) => ticket.title === title
+    );
+
+    if (hasEmptyFields || isDuplicateName) {
+      return;
+    }
+
     addTicket(newTicket, column.name);
     closeModal();
   };
