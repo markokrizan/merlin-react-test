@@ -20,7 +20,7 @@ const TicketModal: FC<{
       {!ticket ? (
         <TicketForm column={column} closeModal={closeModal} />
       ) : (
-        <KanbanTicketPreview ticket={ticket} />
+        <KanbanTicketPreview ticket={ticket} closeModal={closeModal} />
       )}
     </Modal>
   );

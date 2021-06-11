@@ -19,6 +19,12 @@ const KanbanBoard: FC<Kanban> = (kanban) => {
     setIsTicketModalOpen(true);
   };
 
+  const onCloseModal = () => {
+    setIsTicketModalOpen(false);
+    setSelectedTicket(null);
+    setSelectedColumn(null);
+  };
+
   return (
     <div style={{ display: "flex", marginTop: 20 }}>
       <KanbanContextProvider value={kanban}>
@@ -34,7 +40,7 @@ const KanbanBoard: FC<Kanban> = (kanban) => {
           isOpen={isTicketModalOpen}
           column={selectedColumn}
           ticket={selectedTicket}
-          closeModal={() => setIsTicketModalOpen(false)}
+          closeModal={onCloseModal}
         />
       </KanbanContextProvider>
     </div>
