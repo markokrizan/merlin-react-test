@@ -1,20 +1,22 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useState } from "react";
 import useDrop from "../../hooks/useDrop/useDrop";
 import useKanbanContext from "../../hooks/useKanbanContext/useKanbanContext";
 import { Column, Ticket } from "../../typings/typings.d";
 import AddIcon from "../icons/AddIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 import KanbanTicket from "../KanbanTicket/KanbanTicket";
+import TicketModal from "../TicketModal";
 import styles from "./kanbanColumn.module.css";
 
 const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
   column,
   onSelect,
 }) => {
+  const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const { deleteColumn, addTicket, deleteTicket } = useKanbanContext();
 
   const createTicket = () => {
-    alert("Implement 'New Ticket' Modal here!");
+    setIsTicketModalOpen(true);
   };
 
   const dropTask = ({ ticket }: { ticket: Ticket }) => {
@@ -48,6 +50,11 @@ const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
           onClick={() => onSelect(ticket)}
         />
       ))}
+      <TicketModal
+        isOpen={isTicketModalOpen}
+        column={column}
+        closeModal={() => setIsTicketModalOpen(false)}
+      />
     </div>
   );
 };
