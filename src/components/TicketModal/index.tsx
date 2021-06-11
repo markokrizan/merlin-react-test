@@ -2,6 +2,7 @@ import { FC } from "react";
 
 import Modal from "../Modal";
 import TicketForm from "../TicketForm";
+import KanbanTicketPreview from "../KanbanTicketPreview";
 import { Column, Ticket } from "../../typings/typings";
 
 const TicketModal: FC<{
@@ -19,7 +20,7 @@ const TicketModal: FC<{
       {!ticket ? (
         <TicketForm column={column} closeModal={closeModal} />
       ) : (
-        <div>Single ticket view</div>
+        <KanbanTicketPreview ticket={ticket} />
       )}
     </Modal>
   );

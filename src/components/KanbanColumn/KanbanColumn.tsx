@@ -5,19 +5,14 @@ import { Column, Ticket } from "../../typings/typings.d";
 import AddIcon from "../icons/AddIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 import KanbanTicket from "../KanbanTicket/KanbanTicket";
-import TicketModal from "../TicketModal";
 import styles from "./kanbanColumn.module.css";
 
-const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
-  column,
-  onSelect,
-}) => {
-  const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
+const KanbanColumn: FC<{
+  column: Column;
+  onSelect: (Ticket) => void;
+  onTicketCreate: (column: Column) => void;
+}> = ({ column, onSelect, onTicketCreate }) => {
   const { deleteColumn, addTicket, deleteTicket } = useKanbanContext();
-
-  const createTicket = () => {
-    setIsTicketModalOpen(true);
-  };
 
   const dropTask = ({ ticket }: { ticket: Ticket }) => {
     addTicket(ticket, column.name);
@@ -36,7 +31,10 @@ const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
       <div className={styles["column--title"]}>
         {column.name}
         <div>
-          <AddIcon className={styles["icon-button"]} onClick={createTicket} />
+          <AddIcon
+            className={styles["icon-button"]}
+            onClick={() => onTicketCreate(column)}
+          />
           <DeleteIcon
             className={styles["icon-button"]}
             onClick={() => deleteColumn(column.name)}
@@ -50,11 +48,6 @@ const KanbanColumn: FC<{ column: Column; onSelect: (Ticket) => void }> = ({
           onClick={() => onSelect(ticket)}
         />
       ))}
-      <TicketModal
-        isOpen={isTicketModalOpen}
-        column={column}
-        closeModal={() => setIsTicketModalOpen(false)}
-      />
     </div>
   );
 };
