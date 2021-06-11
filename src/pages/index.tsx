@@ -26,6 +26,8 @@ export default function Home() {
           <KanbanBoard {...kanban} />
         </div>
       </div>
+
+      <div id="portal"></div>
     </div>
   );
 }

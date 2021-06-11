@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
+import useDrag from "../../hooks/useDrag/useDrag";
 import useKanbanContext from "../../hooks/useKanbanContext/useKanbanContext";
 import { Ticket } from "../../typings/typings";
 import DeleteIcon from "../icons/DeleteIcon";
@@ -10,8 +11,17 @@ const KanbanTicket: FC<{ ticket: Ticket; onClick: () => void }> = ({
 }) => {
   const { deleteTicket } = useKanbanContext();
 
+  const dragRef = useRef();
+
+  useDrag({
+    data: JSON.stringify({
+      ticket,
+    }),
+    draggablElementRef: dragRef,
+  });
+
   return (
-    <div className={styles.ticket}>
+    <div className={styles.ticket} ref={dragRef}>
       <div className={styles["ticket--title"]}>
         <a onClick={() => onClick()}>{ticket.title}</a>
         <DeleteIcon
